@@ -79,8 +79,15 @@ window.addEventListener("load", function(){
 		chanceRain.innerHTML = api_response.daily.data[0].precipProbability + "%";
 		humidity.innerHTML = api_response.daily.data[0].humidity*100 + "%";
 		
+		function degToCompass(num) {
+		    var val = Math.floor((num / 22.5) + 0.5);
+		    var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+		    return arr[(val % 16)];
+		}
 
-		wind.innerHTML = Math.round(api_response.daily.data[0].windSpeed) + " mph ";
+		var wind_direction = degToCompass(api_response.daily.data[0].windBearing);
+
+		wind.innerHTML = Math.round(api_response.daily.data[0].windSpeed) + " mph " + wind_direction;
 		
 
 
