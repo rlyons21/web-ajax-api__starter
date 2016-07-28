@@ -82,7 +82,7 @@ window.addEventListener("load", function(){
 		function degToCompass(num) {
 		    var val = Math.floor((num / 45) + 0.5);
 		    var arr = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
-		    return arr[(val % 16)];
+		    return arr[(val % 8)];
 		}
 
 		var wind_direction = degToCompass(api_response.daily.data[0].windBearing);
@@ -92,8 +92,8 @@ window.addEventListener("load", function(){
 
 
 		realFeel.innerHTML = Math.round(api_response.currently.apparentTemperature) + "&deg;";
-		precipitation.innerHTML = api_response.daily.data[0].precipIntensity;
-		pressure.innerHTML = api_response.daily.data[0].pressure
+		precipitation.innerHTML = api_response.daily.data[0].precipIntensity + " in";
+		pressure.innerHTML = Math.round((29.92 * api_response.daily.data[0].pressure) / 1013.25) + " in";
 		visibility.innerHTML = api_response.daily.data[0].visibility + " mi";
 
 	});
