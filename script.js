@@ -80,8 +80,8 @@ window.addEventListener("load", function(){
 		humidity.innerHTML = api_response.daily.data[0].humidity*100 + "%";
 		
 		function degToCompass(num) {
-		    var val = Math.floor((num / 22.5) + 0.5);
-		    var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+		    var val = Math.floor((num / 45) + 0.5);
+		    var arr = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
 		    return arr[(val % 16)];
 		}
 
